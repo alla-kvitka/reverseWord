@@ -6,6 +6,4 @@ public class Main {
         String data = scan.nextLine();
         System.out.println(ReverseCharacters.readScanner(data));
     }
-
-
 }
