@@ -1,25 +1,26 @@
 public class ReverseCharacters {
-    public static String readScanner(String data) {
-        String[] lines = data.split("\\s+");
-        StringBuilder sb = new StringBuilder();
-        for (String line : lines) {
-            sb.append(reverseArray(line)).append(" ");
+
+    public String reverseStringData(String data) {
+        String[] words = data.split("\\s+");
+        StringBuilder reverseStringResult = new StringBuilder();
+        for (String word : words) {
+            reverseStringResult.append(reverseWord(word)).append(" ");
         }
-        return sb.toString();
+        return reverseStringResult.toString();
     }
 
-    public static String reverseArray(String word) {
-        StringBuilder result = new StringBuilder();
+    private String reverseWord(String word) {
+        StringBuilder reverseWordResult = new StringBuilder();
         char[] symbols = word.toCharArray();
         char[] points = {'.'};
-        StringBuilder sb = new StringBuilder();
+        StringBuilder letters = new StringBuilder();
         for (int i = 0; i < symbols.length; i++) {
             if (Character.isLetter(symbols[i])) {
-                sb.append(symbols[i]);
+                letters.append(symbols[i]);
                 symbols[i] = points[0];
             }
         }
-        char[] reverseLetters = reverseWord(sb.toString()).toCharArray();
+        char[] reverseLetters = reverseLetter(letters.toString()).toCharArray();
         for (char reverseLetter : reverseLetters) {
             for (int i = 0; i < symbols.length; i++) {
                 if (symbols[i] == points[0]) {
@@ -29,17 +30,17 @@ public class ReverseCharacters {
             }
         }
         for (char symbol : symbols) {
-            result.append(symbol);
+            reverseWordResult.append(symbol);
         }
-        return result.toString();
+        return reverseWordResult.toString();
     }
 
-    public static String reverseWord(String sb) {
-        StringBuilder stringBuilder = new StringBuilder();
-        char[] reversedSymbols = sb.toCharArray();
-        for (int i = reversedSymbols.length - 1; i >= 0; i--) {
-            stringBuilder.append(reversedSymbols[i]);
+    private String reverseLetter(String letters) {
+        StringBuilder reverseLettersResult = new StringBuilder();
+        char[] lettersArray = letters.toCharArray();
+        for (int i = lettersArray.length - 1; i >= 0; i--) {
+            reverseLettersResult.append(lettersArray[i]);
         }
-        return stringBuilder.toString();
+        return reverseLettersResult.toString();
     }
 }
